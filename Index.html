@@ -8,23 +8,26 @@
 <body>
 <div class="sw">
     <h1 id="display">00:00:00</h1>
+    <!--Button Layout-->
     <div class="button">
         <img src="images/stop.png" onclick="watchStop()">
         <img src="images/start.png" onclick="watchStart()">
         <img src="images/reset.png" onclick="watchReset()">
     </div>
+    <h2>Stopwatch</h2>
 </div>
 
-
+<!--Script Code-->
 <script>
+    //intialize varible for second, minute, and hour
     let [seconds, minutes, hours] = [0, 0, 0];
     let displayTime = document.getElementById("display");
     let timer = null;
-
+    //stopwatch funtion to increase the time by one
     function stopwatch() {
         seconds++;
-        if (seconds == 60) {
-            seconds = 0;
+        if (seconds == 60) { 
+            seconds = 0;    
             minutes++;
             if (minutes == 60) {
                 minutes = 0;
@@ -37,18 +40,18 @@
 
         displayTime.innerHTML = h + ":" + m + ":" + s;
     }
-
+    //stop watch start funtion
     function watchStart() {
         if (timer != null) {
             clearInterval(timer);
         }
         timer = setInterval(stopwatch, 1000);
     }
-
+    //stopwatch stop funtion
     function watchStop() {
         clearInterval(timer);
     }
-
+    //stopwatch reset to zero funtion
     function watchReset() {
         clearInterval(timer);
         [seconds, minutes, hours] = [0, 0, 0];
